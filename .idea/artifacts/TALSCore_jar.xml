@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="TALSCore:jar">
+    <output-path>$USER_HOME$/Desktop/server/TheAfterLifeStory-skill-/plugins</output-path>
+    <root id="archive" name="TALSCore.jar">
+      <element id="module-output" name="TALSCore" />
+      <element id="extracted-dir" path="$USER_HOME$/Desktop/server/TheAfterLifeStory-skill-/plugins/TALSAPI.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
