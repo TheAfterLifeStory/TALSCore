@@ -6,6 +6,8 @@ import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import talsapi.talsapi.TALSAPI;
+import talsapi.talsapi.api.event.TALSExpChangeEvent;
 import talsapi.talsapi.api.event.TALSLevelChangeEvent;
 import talscore.talscore.TALSCore;
 
@@ -18,7 +20,8 @@ public class LevelChange implements Listener {
 
         Player p = e.getPlayer();
 
-        p.setPlayerListName(plugin.manager.getPlayerName(p));
+        p.setDisplayName(plugin.manager.getPlayerName(p));
+        p.setPlayerListName(plugin.manager.tabPlayerName(p));
         plugin.manager.putScoreBoard(p);
 
         plugin.manager.showLevel = e.getNewlevel();
@@ -58,6 +61,18 @@ public class LevelChange implements Listener {
                 3 // 散開させるZの範囲
         );
 
+    }
+
+    @EventHandler
+    public void onExpChange(TALSExpChangeEvent e) {
+
+        Player p = e.getPlayer();
+
+        p.setPlayerListName(plugin.manager.tabPlayerName(p));
+
+        plugin.manager.putScoreBoard(p);
+
+        plugin.manager.classPrefix = getClass().getName();
     }
 
 }

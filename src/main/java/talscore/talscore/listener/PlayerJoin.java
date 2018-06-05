@@ -14,14 +14,15 @@ public class PlayerJoin implements Listener {
 
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
-
         Player p = e.getPlayer();
+
         String classPrefix = TALSAPI.getPlayerDeta(p).getMainClass().getPrefix();
         int levelPrefix = TALSAPI.getPlayerDeta(p).getMainClass().getLevel();
 
-        p.setPlayerListName(plugin.manager.getPlayerName(p));
+        p.setDisplayName(plugin.manager.getPlayerName(p));
+        p.setPlayerListName(plugin.manager.tabPlayerName(p));
 
-        e.setJoinMessage("§6≪" + classPrefix + "§a: §fLv.§b" + levelPrefix + "§6≫ §b" + e.getPlayer().getName() + "§fが§bログイン§fしました");
+        e.setJoinMessage(plugin.manager.getPlayerName(p) + "§fが§bログイン§fしました");
 
         p.sendMessage("§6§l-Welcome §e§lto §c§lThe §6§lAfter §a§lLife §b§lStory§6§l-");
         p.sendMessage("§3§l[§b§lNews§3§l]§a§l⇒§c§lAlpha §b§lOpen!!");

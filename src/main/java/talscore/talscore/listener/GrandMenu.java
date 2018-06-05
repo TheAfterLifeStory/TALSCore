@@ -22,18 +22,20 @@ public class GrandMenu implements Listener {
     TALSCore plugin = TALSCore.getPlugin(TALSCore.class);
 
     private Inventory inv;
-    private ItemStack c, s, a;
+    private ItemStack a, b, c, d;
 
     public GrandMenu(Plugin p) {
-        inv = Bukkit.getServer().createInventory(null, 9, "Gamemode Chooser");
+        inv = Bukkit.getServer().createInventory(null, 9, "§6§lGrand Menu");
 
-        c = createItem(DyeColor.GREEN, ChatColor.GREEN + "Creative");
-        s = createItem(DyeColor.YELLOW, ChatColor.YELLOW + "Survival");
-        a = createItem(DyeColor.RED, ChatColor.RED + "Adventure");
+        a = createItem(DyeColor.GREEN, ChatColor.GREEN + "§b§lSkill§a§l/§c§lAbility Menu");
+        b = createItem(DyeColor.YELLOW, ChatColor.YELLOW + "§c§lClass Menu");
+        c = createItem(DyeColor.RED, ChatColor.RED + "§d§lParty Menu");
+        d = createItem(DyeColor.RED, ChatColor.RED + "§f§lOthers");
 
-        inv.setItem(2, c);
-        inv.setItem(4, s);
-        inv.setItem(6, a);
+        inv.setItem(1, a);
+        inv.setItem(3, b);
+        inv.setItem(5, c);
+        inv.setItem(7, d);
 
         Bukkit.getServer().getPluginManager().registerEvents(this, p);
     }
@@ -42,7 +44,7 @@ public class GrandMenu implements Listener {
         ItemStack i = new Wool(dc).toItemStack(1);
         ItemMeta im = i.getItemMeta();
         im.setDisplayName(name);
-        im.setLore(Arrays.asList("Set your gamemode", "to " + name.toLowerCase() + " mode"));
+        im.setLore(Arrays.asList("test aaaaa"));
         i.setItemMeta(im);
         return i;
     }

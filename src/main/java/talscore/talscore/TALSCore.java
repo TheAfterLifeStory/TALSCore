@@ -11,6 +11,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import talsapi.talsapi.TALSAPI;
 import talsapi.talsapi.api.classes.MainClass;
 import talsapi.talsapi.api.manager.enums.Classes;
+import talsapi.talsapi.inter.CreateSkill;
 import talscore.talscore.listener.*;
 import talscore.talscore.manager.PlayerManager;
 
@@ -19,7 +20,6 @@ public final class TALSCore extends JavaPlugin implements Listener {
     //クラスの定義
     public ScoreBoard scoreBoard;
     public PlayerManager manager;
-    public MenuInventory menuInventory;
 
     private String prefix = "§6§l≪§c§lT§6§lA§a§lL§b§lS§e§lCore§6§l≫§r ";
 
@@ -49,6 +49,7 @@ public final class TALSCore extends JavaPlugin implements Listener {
         Bukkit.getConsoleSender().sendMessage(this.prefix + "§eLoading TALSCore");
 
         manager.sendActionBar();
+
 
     }
 
@@ -88,6 +89,11 @@ public final class TALSCore extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onExp(EntityDeathEvent e) {
+
+        if (e.getEntity().getKiller() == null) {
+            return;
+        }
+
         Player p = e.getEntity().getKiller();
         MainClass mainclass = TALSAPI.getPlayerDeta(p).getMainClass();
 
